@@ -1,0 +1,88 @@
+mysql> create view me as select name, salary from employee where salary >20000;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select *me;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'me' at line 1
+mysql> select *from me;
++--------+--------+
+| name   | salary |
++--------+--------+
+| balu   |  50000 |
+| raghu  |  40000 |
+| sachin |  35000 |
+| shannu |  30000 |
+| teja   |  40000 |
+| raghu  |  60000 |
++--------+--------+
+6 rows in set (0.00 sec)
+
+mysql> create index me on employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create index index_name on employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create index index_name on xyz(name varchar(4),idno int(5));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(4),idno int(5))' at line 1
+mysql> create index inx_pname on persons (lastname,firstname);
+ERROR 1146 (42S02): Table 'employee.persons' doesn't exist
+mysql> create index inx_pname on employee (balu,);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create index inx_name on employee (name);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> desc employee;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| id     | int(3)     | YES  |     | NULL    |       |
+| name   | varchar(8) | YES  | MUL | NULL    |       |
+| city   | varchar(7) | YES  |     | NULL    |       |
+| salary | int(5)     | YES  |     | NULL    |       |
+| dept   | varchar(3) | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> select *from employee;
++------+--------+---------+--------+------+
+| id   | name   | city    | salary | dept |
++------+--------+---------+--------+------+
+|  171 | balu   | chennai |  50000 | cse  |
+|  172 | raghu  | chennai |  40000 | eee  |
+|  173 | mani   | mumbai  |  20000 | mec  |
+|  174 | sachin | goa     |  35000 | bio  |
+|  147 | shannu | india   |  30000 | cse  |
+|  123 | teja   | guntur  |  40000 | eee  |
+|  124 | raghu  | vijay   |  60000 | mec  |
++------+--------+---------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> drop index idx_name on employee;
+ERROR 1091 (42000): Can't DROP 'idx_name'; check that column/key exists
+mysql> drop index idx_name on employee;
+ERROR 1091 (42000): Can't DROP 'idx_name'; check that column/key exists
+mysql> Drop index idx_name on employee;
+ERROR 1091 (42000): Can't DROP 'idx_name'; check that column/key exists
+mysql> create table fruits(id int(6),name varchar(8));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into fruits values('7','mango');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from friuts;
+ERROR 1146 (42S02): Table 'employee.friuts' doesn't exist
+mysql> select *from fruits;
++------+-------+
+| id   | name  |
++------+-------+
+|    7 | mango |
++------+-------+
+1 row in set (0.00 sec)
+
+mysql> select *from fruits;
+
+
+
+
+
+
