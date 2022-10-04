@@ -1,0 +1,173 @@
+ use employee;
+Database changed
+mysql> create table employee(id int(3),name varchar(8),city varchar(7),salary int(5));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc employee;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| id     | int(3)     | YES  |     | NULL    |       |
+| name   | varchar(8) | YES  |     | NULL    |       |
+| city   | varchar(7) | YES  |     | NULL    |       |
+| salary | int(5)     | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> select id,max(salary)
+    -> alter table employee add deptid int(4);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'alter table employee add deptid int(4)' at line 2
+mysql> alter table employee add dept varchar(3);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| id     | int(3)     | YES  |     | NULL    |       |
+| name   | varchar(8) | YES  |     | NULL    |       |
+| city   | varchar(7) | YES  |     | NULL    |       |
+| salary | int(5)     | YES  |     | NULL    |       |
+| dept   | varchar(3) | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into employee(id int(3),name varchar(8),city varchar(7),salary int(5),dept varchar(3));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int(3),name varchar(8),city varchar(7),salary int(5),dept varchar(3))' at line 1
+mysql> insert into employee(id,name,city,salary,dept)values('171','balu','chennai','50000','cse');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc employee;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| id     | int(3)     | YES  |     | NULL    |       |
+| name   | varchar(8) | YES  |     | NULL    |       |
+| city   | varchar(7) | YES  |     | NULL    |       |
+| salary | int(5)     | YES  |     | NULL    |       |
+| dept   | varchar(3) | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> select *from employee;
++------+------+---------+--------+------+
+| id   | name | city    | salary | dept |
++------+------+---------+--------+------+
+|  171 | balu | chennai |  50000 | cse  |
++------+------+---------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into employee(id,name,city,salary,dept)values('172','raghu','chennai','40000','eee');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee(id,name,city,salary,dept)values('173','mani','mumbai','20000','mec',);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> desc employee;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| id     | int(3)     | YES  |     | NULL    |       |
+| name   | varchar(8) | YES  |     | NULL    |       |
+| city   | varchar(7) | YES  |     | NULL    |       |
+| salary | int(5)     | YES  |     | NULL    |       |
+| dept   | varchar(3) | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> insert into employee(id,name,city,salary,dept)values('173','mani','mumbai','20000','mec');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee(id,name,city,salary,dept)values('174','sachin','goa','35000','bio');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc employee;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| id     | int(3)     | YES  |     | NULL    |       |
+| name   | varchar(8) | YES  |     | NULL    |       |
+| city   | varchar(7) | YES  |     | NULL    |       |
+| salary | int(5)     | YES  |     | NULL    |       |
+| dept   | varchar(3) | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select *from emmployee;
+ERROR 1146 (42S02): Table 'employee.emmployee' doesn't exist
+mysql> select *from employee;
++------+--------+---------+--------+------+
+| id   | name   | city    | salary | dept |
++------+--------+---------+--------+------+
+|  171 | balu   | chennai |  50000 | cse  |
+|  172 | raghu  | chennai |  40000 | eee  |
+|  173 | mani   | mumbai  |  20000 | mec  |
+|  174 | sachin | goa     |  35000 | bio  |
++------+--------+---------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select count(*)from id;
+ERROR 1146 (42S02): Table 'employee.id' doesn't exist
+mysql> select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|      145000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avr(salary) from employee;
+ERROR 1305 (42000): FUNCTION employee.avr does not exist
+mysql> select avg(salary) from employee;
++-------------+
+| avg(salary) |
++-------------+
+|  36250.0000 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select max(rate) from employee;
+ERROR 1054 (42S22): Unknown column 'rate' in 'field list'
+mysql> select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|       50000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select *from employee salary between 40000 and 35000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between 40000 and 35000' at line 1
+mysql> select from employee salary between 50000 and 40000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from employee salary between 50000 and 40000' at line 1
+mysql> select *from employee salary 20000 and 35000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '20000 and 35000' at line 1
+mysql> select *from employee salary between 20000 and 35000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between 20000 and 35000' at line 1
+mysql> select *from employee where salary between 20000 and 35000;
++------+--------+--------+--------+------+
+| id   | name   | city   | salary | dept |
++------+--------+--------+--------+------+
+|  173 | mani   | mumbai |  20000 | mec  |
+|  174 | sachin | goa    |  35000 | bio  |
++------+--------+--------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql>  select *from employee where city in ('goa','mumbai');
++------+--------+--------+--------+------+
+| id   | name   | city   | salary | dept |
++------+--------+--------+--------+------+
+|  173 | mani   | mumbai |  20000 | mec  |
+|  174 | sachin | goa    |  35000 | bio  |
++------+--------+--------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql>  select *from employee where city in ('goa','mumbai');
