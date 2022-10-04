@@ -1,0 +1,25 @@
+mysql>
+mysql> select *from employee;
++------+--------+---------+--------+------+
+| id   | name   | city    | salary | dept |
++------+--------+---------+--------+------+
+|  171 | balu   | chennai |  50000 | cse  |
+|  172 | raghu  | chennai |  40000 | eee  |
+|  173 | mani   | mumbai  |  20000 | mec  |
+|  174 | sachin | goa     |  35000 | bio  |
+|  147 | shannu | india   |  30000 | cse  |
+|  123 | teja   | guntur  |  40000 | eee  |
+|  124 | raghu  | vijay   |  60000 | mec  |
++------+--------+---------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select name,salary from employee where salary in (select salary from employee where salary>35000);
++-------+--------+
+| name  | salary |
++-------+--------+
+| balu  |  50000 |
+| raghu |  40000 |
+| teja  |  40000 |
+| raghu |  60000 |
++-------+--------+
+4 rows in set (0.01 sec)
