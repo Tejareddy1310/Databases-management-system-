@@ -1,0 +1,21 @@
+case;
+mysql> use manager;
+Database changed
+mysql> delimiter //
+mysql> select managerid,city,
+    -> case
+    -> when age>25 then "age is greater than"
+    -> when age=25 then "age is equal to 25"
+    -> else "age is below 25"
+    -> end as agevalue
+    -> from manager;
+    -> end //
++-----------+--------+---------------------+
+| managerid | city   | agevalue            |
++-----------+--------+---------------------+
+|         1 | hydera | age is greater than |
+|         2 | delhi  | age is greater than |
+|         3 | goa    | age is below 25     |
+|         4 | kanya  | age is below 25     |
++-----------+--------+---------------------+
+4 rows in set (0.00 sec)
