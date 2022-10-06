@@ -1,0 +1,35 @@
+ use manager;
+Database changed
+mysql> select *from manager;
++-----------+--------+------+--------+
+| managerid | name   | age  | city   |
++-----------+--------+------+--------+
+|         1 | balu   |   28 | hydera |
+|         2 | raja   |   30 | delhi  |
+|         3 | raghu  |   22 | goa    |
+|         4 | mani   |   20 | kanya  |
+|         5 | surya  |   21 | chenna |
+|         5 | surya  |   21 | chenna |
+|         6 | sachin |   27 | mumba  |
++-----------+--------+------+--------+
+7 rows in set (0.00 sec)
+
+mysql> update manager age =30 where name ='balu';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=30 where name ='balu'' at line 1
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from manager where age =21;
+Query OK, 2 rows affected (0.00 sec)
+
+mysql> select *from manager;
++-----------+--------+------+--------+
+| managerid | name   | age  | city   |
++-----------+--------+------+--------+
+|         1 | balu   |   28 | hydera |
+|         2 | raja   |   30 | delhi  |
+|         3 | raghu  |   22 | goa    |
+|         4 | mani   |   20 | kanya  |
+|         6 | sachin |   27 | mumba  |
++-----------+--------+------+--------+
+5 rows in set (0.00 sec)
