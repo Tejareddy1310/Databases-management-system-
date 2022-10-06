@@ -1,0 +1,14 @@
+mysql> delimiter //
+mysql> select repeat(name,2)
+    -> as repeated_name
+    -> from manager;
+    -> end //
++---------------+
+| repeated_name |
++---------------+
+| balubalu      |
+| rajaraja      |
+| raghuraghu    |
+| manimani      |
++---------------+
+4 rows in set (0.00 sec)
