@@ -1,0 +1,80 @@
+create database book;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use book;
+Database changed
+mysql> create table book(id int(1),name varchar(7),year int(5),author char(8));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc book;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| id     | int(1)     | YES  |     | NULL    |       |
+| name   | varchar(7) | YES  |     | NULL    |       |
+| year   | int(5)     | YES  |     | NULL    |       |
+| author | char(8)    | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into book values('1','rose','2012','raghu');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into book values('2','redlabl','2019','raja');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into book values('3','jack','2022','surya');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into book values('4','biad','2020','balu');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select *from book;
++------+---------+------+--------+
+| id   | name    | year | author |
++------+---------+------+--------+
+|    1 | rose    | 2012 | raghu  |
+|    2 | redlabl | 2019 | raja   |
+|    3 | jack    | 2022 | surya  |
+|    4 | biad    | 2020 | balu   |
++------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> update book set name='blue' where id='4';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from book;
++------+---------+------+--------+
+| id   | name    | year | author |
++------+---------+------+--------+
+|    1 | rose    | 2012 | raghu  |
+|    2 | redlabl | 2019 | raja   |
+|    3 | jack    | 2022 | surya  |
+|    4 | blue    | 2020 | balu   |
++------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select sum(year) from book;
++-----------+
+| sum(year) |
++-----------+
+|      8073 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select max(year) from book;
++-----------+
+| max(year) |
++-----------+
+|      2022 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select min(year) from book;
++-----------+
+| min(year) |
++-----------+
+|      2012 |
++-----------+
+1 row in set (0.00 sec)
