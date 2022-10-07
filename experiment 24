@@ -1,0 +1,82 @@
+create database carcompany;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use carcompany;
+Database changed
+mysql> create table carcompany(name varchar(7),year int(6),fuel char(7),motorinteger int(7));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc carcompany;
++--------------+------------+------+-----+---------+-------+
+| Field        | Type       | Null | Key | Default | Extra |
++--------------+------------+------+-----+---------+-------+
+| name         | varchar(7) | YES  |     | NULL    |       |
+| year         | int(6)     | YES  |     | NULL    |       |
+| fuel         | char(7)    | YES  |     | NULL    |       |
+| motorinteger | int(7)     | YES  |     | NULL    |       |
++--------------+------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> insert into carcompany values('honda','2000','petrol','s00120');
+ERROR 1366 (HY000): Incorrect integer value: 's00120' for column 'motorinteger' at row 1
+mysql> insert into carcompany values('honda','2000','petrol','00120');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into carcompany values('bmw','2022','petrol','22392');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into carcompany values('benz','2020','disel','21212');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into carcompany values('tata','2021','electrical','342123');
+ERROR 1406 (22001): Data too long for column 'fuel' at row 1
+mysql> insert into carcompany values('tata','2021','electrical','34213');
+ERROR 1406 (22001): Data too long for column 'fuel' at row 1
+mysql> insert into carcompany values('tata','2021','electri','34213');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into carcompany values('swift','2014','disel','342113');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from carcompany;
++-------+------+---------+--------------+
+| name  | year | fuel    | motorinteger |
++-------+------+---------+--------------+
+| honda | 2000 | petrol  |          120 |
+| bmw   | 2022 | petrol  |        22392 |
+| benz  | 2020 | disel   |        21212 |
+| tata  | 2021 | electri |        34213 |
+| swift | 2014 | disel   |       342113 |
++-------+------+---------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> update carcompany set year = '2015' where fuel ='pertol';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select *from carcompany;
++-------+------+---------+--------------+
+| name  | year | fuel    | motorinteger |
++-------+------+---------+--------------+
+| honda | 2000 | petrol  |          120 |
+| bmw   | 2022 | petrol  |        22392 |
+| benz  | 2020 | disel   |        21212 |
+| tata  | 2021 | electri |        34213 |
+| swift | 2014 | disel   |       342113 |
++-------+------+---------+--------------+
+5 rows in set (0.00 sec)
+mysql> update carcompany set name='hundai' where year ='2000';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from carcompany;
++--------+------+---------+--------------+
+| name   | year | fuel    | motorinteger |
++--------+------+---------+--------------+
+| hundai | 2000 | petrol  |          120 |
+| bmw    | 2022 | petrol  |        22392 |
+| benz   | 2020 | disel   |        21212 |
+| tata   | 2021 | electri |        34213 |
+| swift  | 2014 | disel   |       342113 |
++--------+------+---------+--------------+
+5 rows in set (0.00 sec)
