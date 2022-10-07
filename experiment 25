@@ -1,0 +1,106 @@
+ create database spms;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use spms;
+Database changed
+mysql> create table spms(name varchar(6),subject varchar(8),lab char(8),marks varchar(8));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc spms;
++---------+------------+------+-----+---------+-------+
+| Field   | Type       | Null | Key | Default | Extra |
++---------+------------+------+-----+---------+-------+
+| name    | varchar(6) | YES  |     | NULL    |       |
+| subject | varchar(8) | YES  |     | NULL    |       |
+| lab     | char(8)    | YES  |     | NULL    |       |
+| marks   | varchar(8) | YES  |     | NULL    |       |
++---------+------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> insert into spms values('balu','maths','work','99');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into spms values('raghu','physics','experime','89');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into spms values('surya','telugu','no','00');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into spms values('mani','hindi','no','01');
+Query OK, 1 row affected (0.00 sec)
+mysql> insert into spms values('prenee','chemist','chemicl','100');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into spms values('dariya','english','no','101');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from spms;
++--------+---------+----------+-------+
+| name   | subject | lab      | marks |
++--------+---------+----------+-------+
+| balu   | maths   | work     | 99    |
+| raghu  | physics | experime | 89    |
+| surya  | telugu  | no       | 00    |
+| mani   | hindi   | no       | 01    |
+| prenee | chemist | chemicl  | 100   |
+| dariya | english | no       | 101   |
++--------+---------+----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table spms drop lab;
+Query OK, 6 rows affected (0.02 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select *from spms;
++--------+---------+-------+
+| name   | subject | marks |
++--------+---------+-------+
+| balu   | maths   | 99    |
+| raghu  | physics | 89    |
+| surya  | telugu  | 00    |
+| mani   | hindi   | 01    |
+| prenee | chemist | 100   |
+| dariya | english | 101   |
++--------+---------+-------+
+6 rows in set (0.00 sec)
+mysql> delete from spms where marks;
+Query OK, 5 rows affected (0.00 sec)
+
+mysql> select *from spms;
++-------+---------+-------+
+| name  | subject | marks |
++-------+---------+-------+
+| surya | telugu  | 00    |
++-------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select sum(marks) from spms;
++------------+
+| sum(marks) |
++------------+
+|          0 |
++------------+
+1 row in set (0.00 sec)
+mysql> select avg(marks) from spms;
++------------+
+| avg(marks) |
++------------+
+|          0 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select max(marks) from spms;
++------------+
+| max(marks) |
++------------+
+| 00         |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(marks) from spms;
++------------+
+| min(marks) |
++------------+
+| 00         |
++------------+
+1 row in set (0.00 sec)
